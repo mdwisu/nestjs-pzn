@@ -8,14 +8,10 @@ import {
   Post,
   Query,
   Redirect,
-  Req,
-  Res,
 } from '@nestjs/common';
-import { Response } from 'express';
 
 @Controller('/api/users')
 export class UserController {
-  //! response dengan express tidak direkomendasikan
   @Get('/sample-response')
   @Header('Content-Type', 'application/json')
   @HttpCode(200)
@@ -32,15 +28,13 @@ export class UserController {
       statusCode: 301,
     };
   }
-  //* query direkomendasikan
   @Get('/hello')
-  sayHello(
+  async sayHello(
     @Query('firstName') firstName: string,
     @Query('lastName') lastName: string,
-  ): string {
+  ): Promise<string> {
     return `Hello ${firstName} ${lastName}`;
   }
-  //* param direkomendasikan
   @Get('/:id')
   getById(@Param('id') id: string): string {
     return `GET ${id}`;
