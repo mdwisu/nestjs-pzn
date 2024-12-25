@@ -49,6 +49,11 @@ export class UserController {
     return this.userRepository.save(firstName, lastName);
   }
 
+  @Get('/hello')
+  async sayHello(@Query('name') name: string): Promise<string> {
+    return this.service.sayHello(name);
+  }
+
   @Get('/view/hello')
   viewHello(@Query('name') name: string, @Res() response: Response) {
     response.render('index.html', {
