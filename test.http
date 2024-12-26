@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/users/login?name=contoh
+Content-Type: application/json
+
+{
+  "username": "dwi",
+  "password": "dwi"
+}
+###
+GET http://localhost:3000/api/users/current
+x-username: 1
