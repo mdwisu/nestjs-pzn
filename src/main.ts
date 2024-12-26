@@ -19,6 +19,9 @@ async function bootstrap() {
   app.engine('html', mustache());
 
   app.useGlobalFilters(new ValidationFilter());
+  // app.useGlobalPipes();
+  // app.useGlobalInterceptors();
+  // app.useGlobalGuards();
 
   const configService = app.get(ConfigService);
 
